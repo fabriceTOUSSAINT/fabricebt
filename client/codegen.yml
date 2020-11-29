@@ -1,0 +1,20 @@
+
+overwrite: true
+schema: 'http://localhost:1337/graphql'
+generates:
+  ./src/generatedTypes/index.ts:
+    schema: 
+      - '**/*.graphql'
+    documents: 
+      - '**/*.graphql'
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+      - 'named-operations-object'
+    config:
+      declarationKind:
+        input: 'interface'
+        type: 'interface'
+      enumsAsTypes: false
+      namingConvention: keep
