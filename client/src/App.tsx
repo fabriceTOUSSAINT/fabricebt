@@ -9,7 +9,8 @@ import {
 import Navigation from './components/Navigation';
 
 // Screens
-import Blog from './screens/Blog';
+import Article from './screens/Article';
+import ArticleList from './screens/ArticleList';
 
 import { useLoginMutation } from './generatedTypes';
 
@@ -43,9 +44,10 @@ function App() {
     <Router>
       <Navigation />
       <Switch>
-        <Route exact path='/blog' component={Blog} />
-        <Route path='/' component={Blog} />
-        <Route path='*' component={Blog} />
+        <Route exact path='/blog' component={ArticleList} />
+        <Route exact path='/blog/:articleId' component={Article} />
+        <Route path='/' component={ArticleList} />
+        <Route path='*' component={ArticleList} />
       </Switch>
     </Router>
   );

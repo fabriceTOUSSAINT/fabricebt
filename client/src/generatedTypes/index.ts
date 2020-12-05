@@ -72,6 +72,265 @@ export interface UserPermissionsPasswordPayload {
   ok: Scalars['Boolean'];
 }
 
+export interface Article {
+  __typename?: 'Article';
+  id: Scalars['ID'];
+  created_at: Scalars['DateTime'];
+  updated_at: Scalars['DateTime'];
+  title: Scalars['String'];
+  body: Scalars['String'];
+  published?: Maybe<Scalars['DateTime']>;
+  hero?: Maybe<UploadFile>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  assets?: Maybe<Array<Maybe<UploadFile>>>;
+  categories?: Maybe<Array<Maybe<Category>>>;
+}
+
+
+export type ArticleassetsArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type ArticlecategoriesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export interface ArticleConnection {
+  __typename?: 'ArticleConnection';
+  values?: Maybe<Array<Maybe<Article>>>;
+  groupBy?: Maybe<ArticleGroupBy>;
+  aggregate?: Maybe<ArticleAggregator>;
+}
+
+export interface ArticleAggregator {
+  __typename?: 'ArticleAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+}
+
+export interface ArticleGroupBy {
+  __typename?: 'ArticleGroupBy';
+  id?: Maybe<Array<Maybe<ArticleConnectionId>>>;
+  created_at?: Maybe<Array<Maybe<ArticleConnectionCreated_at>>>;
+  updated_at?: Maybe<Array<Maybe<ArticleConnectionUpdated_at>>>;
+  title?: Maybe<Array<Maybe<ArticleConnectionTitle>>>;
+  body?: Maybe<Array<Maybe<ArticleConnectionBody>>>;
+  published?: Maybe<Array<Maybe<ArticleConnectionPublished>>>;
+  hero?: Maybe<Array<Maybe<ArticleConnectionHero>>>;
+  published_at?: Maybe<Array<Maybe<ArticleConnectionPublished_at>>>;
+}
+
+export interface ArticleConnectionId {
+  __typename?: 'ArticleConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<ArticleConnection>;
+}
+
+export interface ArticleConnectionCreated_at {
+  __typename?: 'ArticleConnectionCreated_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ArticleConnection>;
+}
+
+export interface ArticleConnectionUpdated_at {
+  __typename?: 'ArticleConnectionUpdated_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ArticleConnection>;
+}
+
+export interface ArticleConnectionTitle {
+  __typename?: 'ArticleConnectionTitle';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ArticleConnection>;
+}
+
+export interface ArticleConnectionBody {
+  __typename?: 'ArticleConnectionBody';
+  key?: Maybe<Scalars['String']>;
+  connection?: Maybe<ArticleConnection>;
+}
+
+export interface ArticleConnectionPublished {
+  __typename?: 'ArticleConnectionPublished';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ArticleConnection>;
+}
+
+export interface ArticleConnectionHero {
+  __typename?: 'ArticleConnectionHero';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<ArticleConnection>;
+}
+
+export interface ArticleConnectionPublished_at {
+  __typename?: 'ArticleConnectionPublished_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<ArticleConnection>;
+}
+
+export interface ArticleInput {
+  title: Scalars['String'];
+  body: Scalars['String'];
+  assets?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  published?: Maybe<Scalars['DateTime']>;
+  hero?: Maybe<Scalars['ID']>;
+  categories?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+}
+
+export interface editArticleInput {
+  title?: Maybe<Scalars['String']>;
+  body?: Maybe<Scalars['String']>;
+  assets?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  published?: Maybe<Scalars['DateTime']>;
+  hero?: Maybe<Scalars['ID']>;
+  categories?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+}
+
+export interface createArticleInput {
+  data?: Maybe<ArticleInput>;
+}
+
+export interface createArticlePayload {
+  __typename?: 'createArticlePayload';
+  article?: Maybe<Article>;
+}
+
+export interface updateArticleInput {
+  where?: Maybe<InputID>;
+  data?: Maybe<editArticleInput>;
+}
+
+export interface updateArticlePayload {
+  __typename?: 'updateArticlePayload';
+  article?: Maybe<Article>;
+}
+
+export interface deleteArticleInput {
+  where?: Maybe<InputID>;
+}
+
+export interface deleteArticlePayload {
+  __typename?: 'deleteArticlePayload';
+  article?: Maybe<Article>;
+}
+
+export interface Category {
+  __typename?: 'Category';
+  id: Scalars['ID'];
+  created_at: Scalars['DateTime'];
+  updated_at: Scalars['DateTime'];
+  published_at?: Maybe<Scalars['DateTime']>;
+  articles?: Maybe<Array<Maybe<Article>>>;
+}
+
+
+export type CategoryarticlesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export interface CategoryConnection {
+  __typename?: 'CategoryConnection';
+  values?: Maybe<Array<Maybe<Category>>>;
+  groupBy?: Maybe<CategoryGroupBy>;
+  aggregate?: Maybe<CategoryAggregator>;
+}
+
+export interface CategoryAggregator {
+  __typename?: 'CategoryAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+}
+
+export interface CategoryGroupBy {
+  __typename?: 'CategoryGroupBy';
+  id?: Maybe<Array<Maybe<CategoryConnectionId>>>;
+  created_at?: Maybe<Array<Maybe<CategoryConnectionCreated_at>>>;
+  updated_at?: Maybe<Array<Maybe<CategoryConnectionUpdated_at>>>;
+  published_at?: Maybe<Array<Maybe<CategoryConnectionPublished_at>>>;
+}
+
+export interface CategoryConnectionId {
+  __typename?: 'CategoryConnectionId';
+  key?: Maybe<Scalars['ID']>;
+  connection?: Maybe<CategoryConnection>;
+}
+
+export interface CategoryConnectionCreated_at {
+  __typename?: 'CategoryConnectionCreated_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<CategoryConnection>;
+}
+
+export interface CategoryConnectionUpdated_at {
+  __typename?: 'CategoryConnectionUpdated_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<CategoryConnection>;
+}
+
+export interface CategoryConnectionPublished_at {
+  __typename?: 'CategoryConnectionPublished_at';
+  key?: Maybe<Scalars['DateTime']>;
+  connection?: Maybe<CategoryConnection>;
+}
+
+export interface CategoryInput {
+  articles?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+}
+
+export interface editCategoryInput {
+  articles?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  created_by?: Maybe<Scalars['ID']>;
+  updated_by?: Maybe<Scalars['ID']>;
+}
+
+export interface createCategoryInput {
+  data?: Maybe<CategoryInput>;
+}
+
+export interface createCategoryPayload {
+  __typename?: 'createCategoryPayload';
+  category?: Maybe<Category>;
+}
+
+export interface updateCategoryInput {
+  where?: Maybe<InputID>;
+  data?: Maybe<editCategoryInput>;
+}
+
+export interface updateCategoryPayload {
+  __typename?: 'updateCategoryPayload';
+  category?: Maybe<Category>;
+}
+
+export interface deleteCategoryInput {
+  where?: Maybe<InputID>;
+}
+
+export interface deleteCategoryPayload {
+  __typename?: 'deleteCategoryPayload';
+  category?: Maybe<Category>;
+}
+
 export interface UploadFile {
   __typename?: 'UploadFile';
   id: Scalars['ID'];
@@ -598,7 +857,7 @@ export interface deleteUserPayload {
   user?: Maybe<UsersPermissionsUser>;
 }
 
-export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload;
+export type Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Article | ArticleConnection | ArticleAggregator | ArticleGroupBy | ArticleConnectionId | ArticleConnectionCreated_at | ArticleConnectionUpdated_at | ArticleConnectionTitle | ArticleConnectionBody | ArticleConnectionPublished | ArticleConnectionHero | ArticleConnectionPublished_at | createArticlePayload | updateArticlePayload | deleteArticlePayload | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionCreated_at | CategoryConnectionUpdated_at | CategoryConnectionPublished_at | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload;
 
 export interface InputID {
   id: Scalars['ID'];
@@ -619,6 +878,12 @@ export interface AdminUser {
 
 export interface Query {
   __typename?: 'Query';
+  article?: Maybe<Article>;
+  articles?: Maybe<Array<Maybe<Article>>>;
+  articlesConnection?: Maybe<ArticleConnection>;
+  category?: Maybe<Category>;
+  categories?: Maybe<Array<Maybe<Category>>>;
+  categoriesConnection?: Maybe<CategoryConnection>;
   files?: Maybe<Array<Maybe<UploadFile>>>;
   filesConnection?: Maybe<UploadFileConnection>;
   role?: Maybe<UsersPermissionsRole>;
@@ -630,6 +895,52 @@ export interface Query {
   usersConnection?: Maybe<UsersPermissionsUserConnection>;
   me?: Maybe<UsersPermissionsMe>;
 }
+
+
+export type QueryarticleArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryarticlesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QueryarticlesConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+
+export type QuerycategoryArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QuerycategoriesArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+  publicationState?: Maybe<PublicationState>;
+};
+
+
+export type QuerycategoriesConnectionArgs = {
+  sort?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
 
 
 export type QueryfilesArgs = {
@@ -696,6 +1007,12 @@ export type QueryusersConnectionArgs = {
 
 export interface Mutation {
   __typename?: 'Mutation';
+  createArticle?: Maybe<createArticlePayload>;
+  updateArticle?: Maybe<updateArticlePayload>;
+  deleteArticle?: Maybe<deleteArticlePayload>;
+  createCategory?: Maybe<createCategoryPayload>;
+  updateCategory?: Maybe<updateCategoryPayload>;
+  deleteCategory?: Maybe<deleteCategoryPayload>;
   /** Delete one file */
   deleteFile?: Maybe<deleteFilePayload>;
   /** Create a new role */
@@ -719,6 +1036,36 @@ export interface Mutation {
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
 }
+
+
+export type MutationcreateArticleArgs = {
+  input?: Maybe<createArticleInput>;
+};
+
+
+export type MutationupdateArticleArgs = {
+  input?: Maybe<updateArticleInput>;
+};
+
+
+export type MutationdeleteArticleArgs = {
+  input?: Maybe<deleteArticleInput>;
+};
+
+
+export type MutationcreateCategoryArgs = {
+  input?: Maybe<createCategoryInput>;
+};
+
+
+export type MutationupdateCategoryArgs = {
+  input?: Maybe<updateCategoryInput>;
+};
+
+
+export type MutationdeleteCategoryArgs = {
+  input?: Maybe<deleteCategoryInput>;
+};
 
 
 export type MutationdeleteFileArgs = {
@@ -830,6 +1177,42 @@ export type LoginMutation = (
   ) }
 );
 
+export type GetArticleQueryVariables = Exact<{
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+}>;
+
+
+export type GetArticleQuery = (
+  { __typename?: 'Query' }
+  & { article?: Maybe<(
+    { __typename?: 'Article' }
+    & Pick<Article, 'id' | 'created_at' | 'title' | 'body' | 'published'>
+    & { hero?: Maybe<(
+      { __typename?: 'UploadFile' }
+      & Pick<UploadFile, 'id' | 'ext' | 'url'>
+    )>, assets?: Maybe<Array<Maybe<(
+      { __typename?: 'UploadFile' }
+      & Pick<UploadFile, 'id' | 'ext' | 'url'>
+    )>>> }
+  )> }
+);
+
+export type GetArticleListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetArticleListQuery = (
+  { __typename?: 'Query' }
+  & { articleList?: Maybe<Array<Maybe<(
+    { __typename?: 'Article' }
+    & Pick<Article, 'id' | 'created_at' | 'title' | 'body' | 'published'>
+    & { hero?: Maybe<(
+      { __typename?: 'UploadFile' }
+      & Pick<UploadFile, 'id' | 'ext' | 'url'>
+    )> }
+  )>>> }
+);
+
 
 export const LoginDocument = gql`
     mutation Login($input: UsersPermissionsLoginInput!) {
@@ -863,7 +1246,100 @@ export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginM
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const GetArticleDocument = gql`
+    query GetArticle($id: ID!, $publicationState: PublicationState) {
+  article(id: $id, publicationState: $publicationState) {
+    id
+    created_at
+    title
+    body
+    published
+    hero {
+      id
+      ext
+      url
+    }
+    assets {
+      id
+      ext
+      url
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetArticleQuery__
+ *
+ * To run a query within a React component, call `useGetArticleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetArticleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetArticleQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      publicationState: // value for 'publicationState'
+ *   },
+ * });
+ */
+export function useGetArticleQuery(baseOptions: Apollo.QueryHookOptions<GetArticleQuery, GetArticleQueryVariables>) {
+        return Apollo.useQuery<GetArticleQuery, GetArticleQueryVariables>(GetArticleDocument, baseOptions);
+      }
+export function useGetArticleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetArticleQuery, GetArticleQueryVariables>) {
+          return Apollo.useLazyQuery<GetArticleQuery, GetArticleQueryVariables>(GetArticleDocument, baseOptions);
+        }
+export type GetArticleQueryHookResult = ReturnType<typeof useGetArticleQuery>;
+export type GetArticleLazyQueryHookResult = ReturnType<typeof useGetArticleLazyQuery>;
+export type GetArticleQueryResult = Apollo.QueryResult<GetArticleQuery, GetArticleQueryVariables>;
+export const GetArticleListDocument = gql`
+    query GetArticleList {
+  articleList: articles {
+    id
+    created_at
+    title
+    body
+    published
+    hero {
+      id
+      ext
+      url
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetArticleListQuery__
+ *
+ * To run a query within a React component, call `useGetArticleListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetArticleListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetArticleListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetArticleListQuery(baseOptions?: Apollo.QueryHookOptions<GetArticleListQuery, GetArticleListQueryVariables>) {
+        return Apollo.useQuery<GetArticleListQuery, GetArticleListQueryVariables>(GetArticleListDocument, baseOptions);
+      }
+export function useGetArticleListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetArticleListQuery, GetArticleListQueryVariables>) {
+          return Apollo.useLazyQuery<GetArticleListQuery, GetArticleListQueryVariables>(GetArticleListDocument, baseOptions);
+        }
+export type GetArticleListQueryHookResult = ReturnType<typeof useGetArticleListQuery>;
+export type GetArticleListLazyQueryHookResult = ReturnType<typeof useGetArticleListLazyQuery>;
+export type GetArticleListQueryResult = Apollo.QueryResult<GetArticleListQuery, GetArticleListQueryVariables>;
 export const namedOperations = {
+  Query: {
+    GetArticle: 'GetArticle',
+    GetArticleList: 'GetArticleList'
+  },
   Mutation: {
     Login: 'Login'
   }

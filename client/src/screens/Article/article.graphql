@@ -1,0 +1,19 @@
+query GetArticle($id: ID!, $publicationState: PublicationState) {
+  article(id: $id, publicationState: $publicationState) {
+    id
+    created_at
+    title
+    body
+    published
+    hero {
+      id
+      ext
+      url
+    }
+    assets {
+      id
+      ext
+      url
+    }
+  }
+}

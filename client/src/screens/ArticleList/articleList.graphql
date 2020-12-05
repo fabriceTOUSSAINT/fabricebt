@@ -1,0 +1,14 @@
+query GetArticleList {
+  articleList: articles {
+    id
+    created_at
+    title
+    body
+    published
+    hero {
+      id
+      ext
+      url
+    }
+  }
+}
