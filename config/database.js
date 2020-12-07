@@ -11,7 +11,10 @@ module.exports = ({ env }) => ({
         username: env('DATABASE_USERNAME'),
         password: env('DATABASE_PASSWORD'),
         schema: 'public',
-        ssl: env('ENV') !== 'development'
+        ssl: {
+          ca: fs.readFileSync(__dirname, '/ca-certificate.crt'),
+          rejectUnauthorized: true
+        }
       },
       options: {
         useNullAsDefault: true,
