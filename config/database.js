@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = ({ env }) => ({
   defaultConnection: 'default',
   connections: {
@@ -11,8 +13,8 @@ module.exports = ({ env }) => ({
         username: env('DATABASE_USERNAME'),
         password: env('DATABASE_PASSWORD'),
         schema: 'public',
-        ssl: {
-          ca: fs.readFileSync(__dirname, '/ca-certificate.crt'),
+        ssl: env('ENV') !== 'development' && {
+          ca:  fs.readFileSync(`${__dirname}/ca-certificate.crt`).toString(),
           rejectUnauthorized: true
         }
       },
