@@ -5,13 +5,13 @@ module.exports = ({ env }) => ({
       connector: 'bookshelf',
       settings: {
         client: 'postgres',
-        host: env('DATABASE_HOST', 'localhost'),
-        port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'fabricebt_db'),
-        username: env('DATABASE_USERNAME', 'db_user'),
-        password: env('DATABASE_PASSWORD', 'rR_KN3JsxcKrk!YzZMZRYegYompqFZ'),
+        host: env('DATABASE_HOST'),
+        port: env.int('DATABASE_PORT'),
+        database: env('DATABASE_NAME'),
+        username: env('DATABASE_USERNAME'),
+        password: env('DATABASE_PASSWORD'),
         schema: 'public',
-        // filename: env('DATABASE_FILENAME', '.tmp/data.db'),
+        ssl: env('ENV') !== 'development'
       },
       options: {
         useNullAsDefault: true,
